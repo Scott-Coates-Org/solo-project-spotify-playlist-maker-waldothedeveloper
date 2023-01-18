@@ -1,6 +1,6 @@
 import { AuthProvider } from "./components/login/Auth";
-import { Footer } from "./components/homepage/footer";
-import { Header } from "./components/homepage/header";
+import { Footer } from "./components/footer";
+import { Header } from "./components/header";
 import { HomepageWrapper } from "./components/homepage/wrapper";
 
 //
