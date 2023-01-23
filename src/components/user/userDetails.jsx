@@ -1,39 +1,25 @@
 import { Menu, Transition } from "@headlessui/react";
 
-import { ErrorAlert } from "../error";
 import { Fragment } from "react";
 import { classNames } from "../../utils/classNames";
-import { fetcher } from "../../utils/fetcher";
 import { useProvideAuth } from "../../hooks/useProvideAuth";
-import useSWR from "swr";
 
 export const UserDetails = () => {
-  const { logoutHandler, token } = useProvideAuth();
-  const { data, error, isLoading } = useSWR(
-    token ? ["https://api.spotify.com/v1/me", token] : null,
-    fetcher
-  );
+  const { logoutHandler, token, userProfile } = useProvideAuth();
 
   const userNavigation = [{ name: "Sign out", href: () => logoutHandler() }];
-
-  if (isLoading) {
-    return <p className="mt-2 text-sm text-white">Loading..</p>;
-  }
-
-  if (error) {
-    return <ErrorAlert error={error} />;
-  }
 
   if (token) {
     return (
       <Menu as="div" className="relative ml-3">
         <div>
-          {Array.isArray(data?.images) && data?.images.length > 0 ? (
+          {Array.isArray(userProfile?.images) &&
+          userProfile?.images.length > 0 ? (
             <Menu.Button className="flex max-w-xs items-center rounded-full bg-indigo-600 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-indigo-600">
               <span className="sr-only">Open user menu</span>
               <img
                 className="h-10 w-10 rounded-full"
-                src={data?.images[0]?.url}
+                src={userProfile?.images[0]?.url}
                 alt=""
               />
             </Menu.Button>

@@ -1,4 +1,4 @@
-export const createPlaylistFetcher = async (args, { arg }) => {
+export const postFetcher = async (args, { arg }) => {
   const [url, token] = args;
 
   return fetch(url, {
