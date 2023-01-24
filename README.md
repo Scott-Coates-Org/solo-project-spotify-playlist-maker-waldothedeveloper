@@ -6,4 +6,4 @@ Go to the [milestones tab](../../milestone/1) to track your progress, it is impo
 
 ## Public URL
 
-[Replace me with the link to your app's URL](https://www.google.com/)
+[Replace me with the link to your app's URL](https://smx-spotify-playlist-mak-56a0f.web.app)
