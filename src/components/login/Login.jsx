@@ -11,6 +11,7 @@ if (!spotifyClientKey)
     `spotify client key missing. Did you read the issues? If not, visit the Issues page in this repo on GitHub.`
   );
 
+console.log(process.env.NODE_ENV);
 const Login = () => {
   let retVal;
   const { loginHandler, logoutHandler, token } = useProvideAuth();
@@ -28,7 +29,11 @@ const Login = () => {
     retVal = (
       <SpotifyAuth
         noCookie={true}
-        redirectUri="https://smx-spotify-playlist-mak-56a0f.web.app/callback"
+        redirectUri={
+          process.env.NODE_ENV === "production"
+            ? "https://smx-spotify-playlist-mak-56a0f.web.app/callback"
+            : "http://localhost:3000/callback"
+        }
         clientID={spotifyClientKey}
         scopes={[
           Scopes.playlistModifyPrivate,

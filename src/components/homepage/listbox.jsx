@@ -3,13 +3,29 @@ import { Listbox, Transition } from "@headlessui/react";
 
 import { Fragment } from "react";
 
-export const ListBox = ({ selectedData, data, name, handleChange }) => {
+export const ListBox = ({
+  selectedData,
+  data,
+  name,
+  handleChange,
+  shouldDisable,
+}) => {
   return (
     <>
       <h3 className="text-base font-medium leading-6 text-slate-900">{name}</h3>
-      <Listbox value={selectedData} onChange={handleChange}>
+      <Listbox
+        value={selectedData}
+        onChange={handleChange}
+        disabled={shouldDisable}
+      >
         <div className="relative mt-3">
-          <Listbox.Button className="relative w-full cursor-default rounded-lg bg-white py-2 pl-3 pr-10 text-left shadow-md focus:outline-none focus-visible:border-indigo-500 focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75 focus-visible:ring-offset-2 focus-visible:ring-offset-orange-300 sm:text-sm">
+          <Listbox.Button
+            className={
+              shouldDisable
+                ? "relative w-full cursor-default rounded-lg bg-slate-50 py-2 pl-3 pr-10 text-left shadow-md focus:outline-none sm:text-sm text-slate-500 font-medium"
+                : "relative w-full cursor-default rounded-lg bg-white py-2 pl-3 pr-10 text-left shadow-md focus:outline-none focus-visible:border-indigo-500 focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75 focus-visible:ring-offset-2 focus-visible:ring-offset-orange-300 sm:text-sm"
+            }
+          >
             <span className="block truncate">{selectedData}</span>
             <span className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-2">
               <ChevronUpDownIcon

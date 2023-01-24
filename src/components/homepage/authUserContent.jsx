@@ -93,8 +93,15 @@ export const AuthenticatedUsersContent = () => {
             <div className="mt-6 grid grid-cols-1 gap-y-6 gap-x-4 sm:grid-cols-6">
               <div className="sm:col-span-4">
                 <ListBox
+                  shouldDisable={
+                    playlistComplete ||
+                    isMutating ||
+                    isLoadingFillPlaylist ||
+                    isLoadingTracks
+                  }
                   selectedData={selectedGenre}
                   data={predefinedGenres}
+                  d
                   name="genre"
                   handleChange={handleGenre}
                 />
@@ -102,6 +109,12 @@ export const AuthenticatedUsersContent = () => {
 
               <div className="sm:col-span-4">
                 <ListBox
+                  shouldDisable={
+                    playlistComplete ||
+                    isMutating ||
+                    isLoadingFillPlaylist ||
+                    isLoadingTracks
+                  }
                   selectedData={selectedYear}
                   data={years}
                   name="year"
