@@ -28,7 +28,7 @@ const Login = () => {
     retVal = (
       <SpotifyAuth
         noCookie={true}
-        redirectUri="http://localhost:3000/callback"
+        redirectUri="https://smx-spotify-playlist-mak-56a0f.web.app/callback"
         clientID={spotifyClientKey}
         scopes={[
           Scopes.playlistModifyPrivate,
