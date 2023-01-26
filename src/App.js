@@ -1,16 +1,19 @@
 import { AuthProvider } from "./components/login/Auth";
 import { Footer } from "./components/footer";
 import { Header } from "./components/header";
-import { HomepageWrapper } from "./components/homepage/wrapper";
+import { ThemeProvider } from "./components/providers/themeProvider";
+import { Wrapper } from "./components/homepage/wrapper";
 
 //
 function App() {
   return (
-    <AuthProvider>
-      <Header />
-      <HomepageWrapper />
-      <Footer />
-    </AuthProvider>
+    <ThemeProvider>
+      <AuthProvider>
+        <Header />
+        <Wrapper />
+        <Footer />
+      </AuthProvider>
+    </ThemeProvider>
   );
 }
 
