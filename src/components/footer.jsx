@@ -1,3 +1,7 @@
+import { genres } from "../utils/genres";
+import { useTheme } from "./providers/themeProvider";
+
+//
 const navigation = {
   main: [
     { name: "About", href: "#" },
@@ -73,8 +77,14 @@ const navigation = {
 };
 
 export const Footer = () => {
+  const { theme } = useTheme();
   return (
-    <footer className="bg-white">
+    <footer
+      className={
+        genres.filter((elem) => elem.genre === theme)[0]?.gradient ||
+        `bg-gradient-to-r from-red-500 to-red-800`
+      }
+    >
       <div className="mx-auto max-w-7xl overflow-hidden py-20 px-6 sm:py-24 lg:px-8">
         <nav
           className="-mb-6 columns-2 sm:flex sm:justify-center sm:space-x-12"
@@ -84,7 +94,7 @@ export const Footer = () => {
             <div key={item.name} className="pb-6">
               <a
                 href={item.href}
-                className="text-sm leading-6 text-gray-600 hover:text-gray-900"
+                className="text-sm leading-6 text-slate-50 hover:text-slate-200"
               >
                 {item.name}
               </a>
@@ -96,14 +106,14 @@ export const Footer = () => {
             <a
               key={item.name}
               href={item.href}
-              className="text-gray-400 hover:text-gray-500"
+              className="text-slate-50 hover:text-slate-100"
             >
               <span className="sr-only">{item.name}</span>
               <item.icon className="h-6 w-6" aria-hidden="true" />
             </a>
           ))}
         </div>
-        <p className="mt-10 text-center text-xs leading-5 text-gray-500">
+        <p className="mt-10 text-center text-xs leading-5 text-slate-500">
           &copy; 2020 Your Company, Inc. All rights reserved.
         </p>
       </div>

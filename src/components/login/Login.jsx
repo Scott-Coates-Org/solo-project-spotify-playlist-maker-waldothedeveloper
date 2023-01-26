@@ -11,7 +11,6 @@ if (!spotifyClientKey)
     `spotify client key missing. Did you read the issues? If not, visit the Issues page in this repo on GitHub.`
   );
 
-console.log(process.env.NODE_ENV);
 const Login = () => {
   let retVal;
   const { loginHandler, logoutHandler, token } = useProvideAuth();
@@ -20,7 +19,7 @@ const Login = () => {
     retVal = (
       <button
         onClick={logoutHandler}
-        className="mt-10 inline-flex items-center rounded-md border border-transparent bg-indigo-600 px-6 py-3 text-base font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+        className="mt-10 inline-flex items-center rounded-lg border border-transparent bg-red-600 px-6 py-3 text-base font-medium text-white shadow-sm hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2"
       >
         Sign Out
       </button>
