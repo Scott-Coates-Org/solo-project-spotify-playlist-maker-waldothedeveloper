@@ -1,26 +1,26 @@
 import { ListBox } from "./listbox";
-// import { ProgressBar } from "../progress";
-import { ProgressFeedback } from "./progressFeedback";
+import { Modal } from "../modal";
 import { genres } from "../../utils/genres";
+import { motion } from "framer-motion";
 import { useHandleForm } from "../../hooks/useHandleForm";
+import { usePlaylistProcess } from "../../hooks/usePlaylistProcess";
+import { useState } from "react";
 import { useTheme } from "../providers/themeProvider";
-
 //
 export const AuthenticatedUsersContent = () => {
+  const [openModal, setOpenModal] = useState(false);
+  const { resetInputs, handleYear, years, selectedYear } = useHandleForm();
   const {
-    resetInputs,
+    percentage,
     createPlaylist,
-    handleYear,
-    playlistComplete,
-    // percentage,
-    years,
-    isMutating,
-    isLoadingFillPlaylist,
-    isLoadingTracks,
     setPlaylist,
-    selectedYear,
+    playlistComplete,
+    isMutating,
+    isLoadingTracks,
+    isLoadingFillPlaylist,
     playlist,
-  } = useHandleForm();
+    resetAll,
+  } = usePlaylistProcess(selectedYear, setOpenModal);
   const { setTheme, theme } = useTheme();
   return (
     <div>
@@ -70,13 +70,18 @@ export const AuthenticatedUsersContent = () => {
         <div className="pt-5">
           {playlist && playlistComplete ? (
             <button
-              onClick={resetInputs}
+              type="button"
+              onClick={() => {
+                resetInputs();
+                resetAll();
+              }}
               className="inline-flex items-center rounded-md border-2 border-amber-50 bg-transparent px-6 py-3 text-base font-medium text-white shadow-sm focus:outline-none focus:ring-2 focus:ring-slate-700 focus:ring-offset-2"
             >
               Start Over
             </button>
           ) : (
-            <button
+            <motion.button
+              whileHover={{ scale: 1.1 }}
               disabled={
                 isMutating ||
                 isLoadingFillPlaylist ||
@@ -90,20 +95,20 @@ export const AuthenticatedUsersContent = () => {
               className="inline-flex items-center rounded-md border-2 border-amber-50 bg-transparent px-6 py-3 text-base font-medium text-white shadow-sm focus:outline-none focus:ring-2 focus:ring-slate-700 focus:ring-offset-2"
             >
               Generate Playlist
-            </button>
+            </motion.button>
           )}
         </div>
       </form>
 
-      <div className="mt-4">
-        {/* <ProgressBar percentage={percentage} /> */}
-        <ProgressFeedback
-          isMutating={isMutating}
-          isLoadingFillPlaylist={isLoadingFillPlaylist}
-          isLoadingTracks={isLoadingTracks}
-          playlistComplete={playlistComplete}
-        />
-      </div>
+      <Modal
+        percentage={percentage}
+        open={openModal}
+        setOpen={setOpenModal}
+        isMutating={isMutating}
+        isLoadingFillPlaylist={isLoadingFillPlaylist}
+        isLoadingTracks={isLoadingTracks}
+        playlistComplete={playlistComplete}
+      />
     </div>
   );
 };

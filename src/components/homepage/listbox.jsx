@@ -38,7 +38,7 @@ export const ListBox = ({
             leaveFrom="opacity-100"
             leaveTo="opacity-0"
           >
-            <Listbox.Options className="z-50 absolute mt-1 max-h-60 w-full overflow-auto rounded-md bg-white-50/30 backdrop-blur-md py-1 text-base shadow-lg border-2 border-white/50 focus:outline-none sm:text-sm">
+            <Listbox.Options className="z-50 absolute mt-1 max-h-60 w-full overflow-auto rounded-md bg-white-50/30 backdrop-blur-md py-1 text-base shadow-lg border-2 border-white focus:outline-none sm:text-sm">
               {data.map((elem, dataIdx) => (
                 <Listbox.Option
                   key={dataIdx}
