@@ -113,8 +113,15 @@ export const Footer = () => {
             </a>
           ))}
         </div>
-        <p className="mt-10 text-center text-xs leading-5 text-slate-500">
-          &copy; 2020 Your Company, Inc. All rights reserved.
+        <p className="mt-10 text-center text-xs leading-5 text-slate-50">
+          &copy; {new Date().getFullYear()} Made with 💖 by{" "}
+          <a
+            href="https://linktr.ee/waldothedeveloper"
+            rel="nofollow noopener noreferrer"
+            target="_blank"
+          >
+            <i>Waldo Lavaut</i>
+          </a>
         </p>
       </div>
     </footer>
