@@ -1,9 +1,7 @@
 # Spotify Playlist Maker
 
-## Sprint Progress
-
-Go to the [milestones tab](../../milestone/1) to track your progress, it is important that when you complete an issue you mark it as closed.
+Generate a custom playlist based on a genre and a year.
 
 ## Public URL
 
-[Replace me with the link to your app's URL](https://smx-spotify-playlist-mak-56a0f.web.app)
+[Click here to visit this project](https://smx-spotify-playlist-mak-56a0f.web.app)
